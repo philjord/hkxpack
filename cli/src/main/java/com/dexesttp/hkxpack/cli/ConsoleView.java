@@ -19,7 +19,10 @@ public final class ConsoleView {
 	 * 
 	 * @param args the console arguments.
 	 */
-	public static void main(final String... args) {
+	public static void main(final String... args2) {
+		
+		String[] args = new String[] {"unpack","D:/temp/mt_idle.hkx"};
+		
 		// Set the logging properties
 		System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$s] %5$s%n");
 		Command command;
