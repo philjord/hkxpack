@@ -43,11 +43,13 @@ public class HKXObjectReader {
 			try {
 				HKXMemberReader memberReader = memberFactory.getMemberReader(memberTemplate);
 				member = memberReader.read(position);
+				result.getMembersList().add(member);
 			} catch (ClassFileReadException | InvalidPositionException e) {
-				member = createFailedMember(memberTemplate, e);
-				LoggerUtil.add(e);
+				System.out.println(""+ e.getMessage());
+				//member = createFailedMember(memberTemplate, e);
+				//LoggerUtil.add(e);
 			}
-			result.getMembersList().add(member);
+			
 		}
 		return result;
 	}

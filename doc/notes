@@ -1,26 +1,53 @@
+Your kick off point is to open the cli project that's a sub project of hkxpack (different project in eclipse, same file system files)
+
+Then look at ConsoleView and run it, that gets you from the nifskope exported hkx binary to an xml file to look at
+
+
+
+these docs tell me how to run the reflection py stuff
+D:\game_media\tools\hk2010_2_0r1\Docs
+search python
+
+so I just need to set it up and run it
+note that it seems to use the h file of which I have all, but I don't have cpp file just compiled lib files, so good as gold
+
+
+
+
 HKXPack is a tool to 'pack' and 'unpack' to and from hkx files, which is the Havok compressed file format.
 
 It was made to be used with the hk_2014.1.0-r1 file format, commonly used in Fallout 4. Given the opportunity, support for hk_2010.2.0-r1 or other hkx formats may be added.
+
+Note I also need to convert FO4 into kf file as well recalling
+but the first port of call is the static meshes inside the nif file, which are now in
+bhkNPCollisionObject
+child of
+bhkPhysicsSystem
+which has binary data...
+https://github.com/figment/010_nif/blob/master/Templates/Nif/FO4Objects.bt
+BSbhkNPObject shows the kick off to get the binary into a dom format, I've done this work already phew!
 
 
 I might be able to modify the xml to the 2010 format by looking at figments output? possibly by looking at errors generated
 
 
-
-where did I get the xml from I think it was published wiht the relase jar now I think about it
+where did I get the 2014 xml from I think it was published with the release jar now I think about it
 
 
 blender importer for hkx skyrim https://github.com/opparco/io_anim_hkx
 
 
-I need the xml file taht go with the jhavok sdk for skyrim, I belive that's 2010, but ned to double check
+I need the xml file that go with the jhavok sdk for skyrim, I believe that's 2010, but need to double check
 this thing a com with the next ones along the FO4 ones
 
 perhaps I should look at the raw files that are converted and just work out how to convert, perhaps using very project
 
 need to look at the source code of the exe  and see where it gets it's xml files form (are they these ones?) then maybe use the time machine to find a skyrim one
+No the exe uses he sdk as released by havok in binary form, so there's no xml in it.
+I'm still going to have to find the py file that creates xml file I wager
 
-I've literraly convert sim using the exe so perhaps I can dig through it and or it's code and work out what it's doing
+
+I've literally convert skyrim using the exe so perhaps I can dig through it and or it's code and work out what it's doing
 perhaps first port of call is to get the skyrim gear converted xe again and confirm the input sna outputs, then I've got a starting point
 
 
@@ -33,3 +60,24 @@ these h files have the hkMeshBody type names in them, and a note
 
 so perhaps perhaps
 I see heaps of h file describing the files
+
+
+
+
+
+
+
+
+
+
+
+
+
+Selected file: D:\game_media\Fallout4\Meshes\Architecture\Airport\Barricade\BOSBarricadeBase01.nif
+ 
+class name hknpPhysicsSystemData
+class name hknpCompressedMeshShape
+class name hkRefCountedProperties
+class name hknpBSMaterialProperties
+class name hknpCompressedMeshShapeData
+class name hknpConvexPolytopeShape
